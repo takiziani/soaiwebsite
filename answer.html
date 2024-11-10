@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer</title>
+    <link rel="stylesheet" href="answer.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h2>Challenge 3</h2>
+            <h1>Question 1</h1>
+            <button class="submit-button">Submit Answer</button>
+        </header>
+        <div class="content">
+            <div class="question-info">
+                <p>Fill in the blanks <span class="timer">⏱</span></p>
+            </div>
+            <div class="question-box">
+                <p>
+                    The three columns in the <code>stars</code> DataFrame currently have very cumbersome names
+                    (<code>Temperature (K)</code>, <code>Luminosity(L/Lo)</code>, <code>Radius(R/Ro)</code>).
+                    Rename them using the provided list <code>column_names</code>.
+                </p>
+                <p><strong>Write the code to return the output</strong></p>
+                <textarea class="code-input" placeholder="write code here"></textarea>
+            </div>
+            <div class="output-box">
+                <p>Expected Output</p>
+                <pre class="expected-output">    temperature   luminosity   radius
+0      3068       2.400e-03     0.170
+1      3642       5.000e-04     0.154
+2      2600       3.000e-04     0.102
+3      2880       2.000e-04     0.160
+4      1939       1.380e-04     0.103
+                </pre>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let timerElement = document.querySelector(".timer");
+            let seconds = 0;
+
+            function updateTimer() {
+                seconds++;
+                timerElement.textContent = `⏱ ${seconds}s`;
+            }
+
+            setInterval(updateTimer, 1000);
+        });
+        document.querySelector(".submit-button").addEventListener("click", function () {
+            let codeInput = document.querySelector(".code-input").value;
+            let timeSpent = document.querySelector(".timer").textContent;
+
+            fetch('/submit-answer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    answer: codeInput,
+                    time: timeSpent
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.finished) {
+                        window.location.href = '/finished';
+                    } else if (data.correct) {
+                        window.location.href = '/next-question';
+                    } else {
+                        window.location.href = '/false-response';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+
+</html>
