@@ -14,9 +14,23 @@ body {
 }
 
 .container {
-    background-color: #ffffff;
-    width: 350px;
+    width: 600px;
     padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h2 {
+    font-size: 18px;
+    color: #333;
+}
+
+.content {
+    background-color: #ffffff;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -24,45 +38,39 @@ body {
 
 .content h1 {
     font-size: 24px;
-    color: #333333;
-    margin-bottom: 20px;
+    color: #333;
+    margin-bottom: 10px;
 }
 
-.section {
+.content p {
+    color: #666;
+    font-size: 16px;
     margin-bottom: 20px;
 }
 
 .icon {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    margin: 20px 0;
+}
+
+.content h2 {
+    font-size: 20px;
+    color: #333;
     margin-bottom: 10px;
 }
 
-.section h2 {
-    font-size: 18px;
-    color: #333333;
-    margin-bottom: 5px;
-}
-
-.section p {
-    font-size: 14px;
-    color: #666666;
-    line-height: 1.6;
-}
-
-.login-button {
+.try-again-button {
     background-color: #8a2be2;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: bold;
+    color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 20px;
 }
 
-.login-button:hover {
+.try-again-button:hover {
     background-color: #7b26cc;
 }
